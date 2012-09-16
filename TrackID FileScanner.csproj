@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>GOAL! 23.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,28 +74,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\json_string.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\curl.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ffmpeg.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\result.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tag.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zlib1.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\codegen.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="GOAL! 23.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
