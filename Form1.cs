@@ -11,12 +11,13 @@ using System.Net;
 using System.Resources;
 using System.Reflection;
 using System.Diagnostics;
+using TrackIDFileScanner.Properties;
 
 namespace WindowsFormsApplication4
 {
     public partial class Form1 : Form
     {
-
+        
 
         public Form1()
         {
@@ -27,16 +28,66 @@ namespace WindowsFormsApplication4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            toolStripProgressBar1.Value = 0;
-            string s = System.Environment.GetCommandLineArgs()[1];
-            if (File.Exists(s)==true )
+
+            byte[] resf;
+            string s;
+
+            s = "C:\\codegen\\codegen.exe";
+            if (File.Exists(s)!=true )
             {
-                GetInfo(s);
+            resf = Resources.codegen;
+            System.IO.File.WriteAllBytes(s, resf);
             }
-            else
+            
+            s = "C:\\codegen\\curl.exe";
+            if (File.Exists(s) != true)
             {
+                resf = Resources.curl;
+            System.IO.File.WriteAllBytes(s, resf);
+            }
+
+
+            s = "C:\\codegen\\ffmpeg.exe";
+            if (File.Exists(s) != true)
+            {
+                resf = Resources.ffmpeg;
+                System.IO.File.WriteAllBytes(s, resf);
+            }
+
+            s = "C:\\codegen\\tag.dll";
+            if (File.Exists(s) != true)
+            {
+                resf = Resources.tag;
+                System.IO.File.WriteAllBytes(s, resf);
+            }
+
+            s = "C:\\codegen\\zlib1.dll";
+            if (File.Exists(s) != true)
+            {
+                resf = Resources.zlib1;
+                System.IO.File.WriteAllBytes(s, resf);
+            }
+
+            try
+            {
+                    toolStripProgressBar1.Value = 0;
+                string ss = System.Environment.GetCommandLineArgs()[1];
+                if (File.Exists(ss)==true )
+                {
+                    oldname = ss;
+                    GetInfo(ss);
+                }
+                else
+                {
+                    Application.ExitThread();
+                }
+                }
+            catch (Exception)
+            {
+                MessageBox.Show("Для анализирования файла mp3 откройте файл при помощи этой программы.");
                 Application.ExitThread();
             }
+            
             
         }
 
@@ -44,7 +95,7 @@ namespace WindowsFormsApplication4
         {
             toolStripProgressBar1.Value = 10;
             SongInfo si = new SongInfo();
-            File.Copy(filename,@"C:\codegen\test.mp3",true );
+            //File.Copy(filename,@"C:\codegen\test.mp3",true );
             toolStripStatusLabel1.Text = "Анализирование трека ...";
             run(@"C:\codegen\codegen.exe", " \"" + filename + "\" 20 45");
             toolStripProgressBar1.Value = 30;
@@ -279,10 +330,40 @@ namespace WindowsFormsApplication4
                     toolStripStatusLabel1.Text = "Анализ завершен успешно.";
                     string s = "Исполнитель: " + artist_name + "\n";
                     s += "Название трека: " + title + "\n\n";
+                    newname = artist_name + " - " + title;
                     richTextBox1.Text = s;
                     toolStripProgressBar1.Value = 100;
+                    button1.Visible = true;
+                    button1.Text = button1.Text + ": " + newname;
                 }
             }
+        }
+
+        string oldname = "";
+        string newname = "";
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            
+        }
+
+        private void переименоватьФайлToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(oldname);
+            dir = dir + @"\";
+            dir = dir + newname + ".mp3";
+            File.Move(oldname, newname);
+            Application.ExitThread();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string dir = Path.GetDirectoryName(oldname);
+            dir = dir + @"\";
+            dir = dir + newname.Replace(":","") + ".mp3";
+            File.Copy (oldname, dir );
+            File.Delete(oldname);
+            MessageBox.Show("OK");
+
         }
       
     }

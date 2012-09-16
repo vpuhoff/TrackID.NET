@@ -61,11 +61,83 @@ namespace TrackIDFileScanner.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] codegen {
+            get {
+                object obj = ResourceManager.GetObject("codegen", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] curl {
+            get {
+                object obj = ResourceManager.GetObject("curl", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] ffmpeg {
+            get {
+                object obj = ResourceManager.GetObject("ffmpeg", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] json_string {
+            get {
+                object obj = ResourceManager.GetObject("json_string", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Исполнитель: Daft Punk
+        ///Название трека: One More Time (Romanthony&apos;s Unplugged)
+        ///
+        ///.
+        /// </summary>
+        internal static string result {
+            get {
+                return ResourceManager.GetString("result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на  -F &quot;api_key=K6ESC9GPDLWQNERPZ&quot; -F &quot;query=@json_string.json&quot; &quot;http://developer.echonest.com/api/v4/song/identify&quot; &gt;result.inf.
         /// </summary>
         internal static string String1 {
             get {
                 return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] tag {
+            get {
+                object obj = ResourceManager.GetObject("tag", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] zlib1 {
+            get {
+                object obj = ResourceManager.GetObject("zlib1", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }
